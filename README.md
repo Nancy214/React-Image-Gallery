@@ -1,2 +1,2 @@
-# React-Image-Galleryh
+# React-Image-Gallery
 An image gallery application using React Js and Unsplash API
