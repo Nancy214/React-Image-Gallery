@@ -24,6 +24,8 @@ const Gallery = () => {
   );
   const [isRandom, setIsRandom] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] =
+    useState('');
   const [modalData, setModalData] = useState({});
 
   useEffect(() => {
@@ -58,20 +60,27 @@ const Gallery = () => {
     setModalData(response.data);
   };
 
-  const handleSearch = async (text) => {
+  const handleSearch = async (text, value) => {
     setIsRandom(false);
+    setSearchText(text);
     if (text === '') {
-      getPhotos();
+      getPhotos(1);
     } else {
       const response = await axios.get(
-        `https://api.unsplash.com/search/photos?client_id=${config.unsplash_client_id}&query=${text}`
+        `https://api.unsplash.com/search/photos?client_id=${
+          config.unsplash_client_id
+        }&query=${text}&page=${value ? value : 1}`
       );
       setPhotos(response.data.results);
     }
   };
 
   const handlePagination = (event, value) => {
-    getPhotos(value);
+    if (searchText === '') {
+      getPhotos(value);
+    } else {
+      handleSearch(searchText, value);
+    }
   };
 
   return (
