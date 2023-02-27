@@ -114,6 +114,7 @@ const Gallery = () => {
   const handleSearch = async (text) => {
     setIsRandom(false);
     setIsCollections(false);
+    setIsTopic(false);
     setSearchText(text);
     if (text === '') {
       getPhotos(1);
