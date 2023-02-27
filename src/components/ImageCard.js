@@ -10,7 +10,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const ImageCard = ({ photo }) => {
   return (
-    <Card>
+    <Card
+      sx={{
+        borderRadius: '15px',
+      }}
+    >
       <CardMedia
         component='img'
         image={photo.urls.regular}

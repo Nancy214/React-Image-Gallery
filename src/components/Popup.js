@@ -16,7 +16,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 
 const Popup = ({ modalData }) => {
   return (
-    <Card>
+    <Card sx={{ borderRadius: '15px' }}>
       <CardMedia
         component='img'
         image={modalData.urls.regular}
@@ -112,6 +112,7 @@ const Popup = ({ modalData }) => {
               top: -70,
               position: 'relative',
               right: -100,
+              marginBottom: '30px',
             }}
           >
             <Button
@@ -123,7 +124,14 @@ const Popup = ({ modalData }) => {
                 },
               }}
             >
-              Download
+              <a
+                href={modalData.links.download}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {' '}
+                Download
+              </a>
             </Button>
           </Container>
         </Container>
